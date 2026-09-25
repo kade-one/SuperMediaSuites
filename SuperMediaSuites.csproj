@@ -1,0 +1,102 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>SuperMediaSuites</RootNamespace>
+    <AssemblyName>SuperMediaSuites</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+
+    <!-- Unpackaged (no MSIX): the app runs from a plain folder / portable zip. -->
+    <WindowsPackageType>None</WindowsPackageType>
+    <!-- Ship the Windows App SDK runtime inside the output so no installer is required. -->
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.0</Version>
+
+    <!-- Magick.NET / PDFtoImage ship native libs; let the SDK place runtimes correctly -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <!-- Known CVEs in bundled native media libs are tracked in README; do not flood build output. -->
+    <NoWarn>$(NoWarn);NU1901;NU1902;NU1903</NoWarn>
+    <!-- MVVMTK0045: field-based [ObservableProperty] is flagged for NativeAOT/CsWinRT authoring.
+         This app publishes JIT (ReadyToRun, no trim/NativeAOT) so the warning does not apply.
+         If switching to NativeAOT publishing, convert these to partial properties. -->
+    <NoWarn>$(NoWarn);MVVMTK0045</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Window + system-tray icon; copied so it is found at runtime next to the .exe. -->
+    <Content Include="Assets\AppIcon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <!--
+    Bundled ffmpeg.exe (Video / Audio / CD Ripper tabs). Place ffmpeg.exe + ffprobe.exe in a
+    folder named "ffmpeg" next to the .csproj before building. The include is conditional so the
+    build still succeeds when the binaries are absent; at runtime FFmpegLocator also probes
+    %LOCALAPPDATA%\SuperMediaSuites\bin and the system PATH. NEVER downloaded at runtime.
+  -->
+  <ItemGroup Condition="Exists('ffmpeg\ffmpeg.exe')">
+    <None Include="ffmpeg\ffmpeg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ffmpeg\ffprobe.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2526" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.4.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="Xabe.FFmpeg" Version="5.2.6" />
+    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="14.6.0" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="PDFtoImage" Version="5.0.0" />
+    <PackageReference Include="PdfSharpCore" Version="1.3.67" />
+    <PackageReference Include="H.NotifyIcon.WinUI" Version="2.3.2" />
+  </ItemGroup>
+
+  <!-- Publish Properties -->
+  <PropertyGroup>
+    <PublishReadyToRun Condition="'$(Configuration)' == 'Debug'">False</PublishReadyToRun>
+    <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">True</PublishReadyToRun>
+    <PublishTrimmed>False</PublishTrimmed>
+  </PropertyGroup>
+
+  <!--
+    Release/portable builds target a concrete Windows RID and bundle the .NET runtime as well, so
+    the published folder (and the release zip built from it) needs nothing pre-installed.
+  -->
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <RuntimeIdentifier Condition="'$(Platform)' == 'x64'">win-x64</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(Platform)' == 'x86'">win-x86</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(Platform)' == 'ARM64'">win-arm64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <!--
+    Windows App SDK self-contained publish silently drops the app's compiled XAML resource index
+    (SuperMediaSuites.pri) from the publish folder. Without resources.pri the published exe dies
+    instantly at startup with a XamlParseException (exit code 0xC000027B) even though the Debug
+    build runs fine, so copy it next to the published executable.
+  -->
+  <Target Name="CopyAppPriToPublish" AfterTargets="Publish" Condition="Exists('$(OutDir)$(AssemblyName).pri')">
+    <Copy SourceFiles="$(OutDir)$(AssemblyName).pri" DestinationFiles="$(PublishDir)resources.pri" />
+  </Target>
+
+</Project>

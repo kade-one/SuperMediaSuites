@@ -1,0 +1,85 @@
+<UserControl
+    x:Class="SuperMediaSuites.Views.PlayerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="using:SuperMediaSuites.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="720" d:DesignWidth="1000"
+    FontFamily="Cascadia Code">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+        <ResourceDictionary.ThemeDictionaries>
+            <ResourceDictionary x:Key="Default">
+                <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="#27AE60" Opacity="0.5"/>
+            </ResourceDictionary>
+            <ResourceDictionary x:Key="Light">
+                <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="#27AE60" Opacity="0.55"/>
+            </ResourceDictionary>
+        </ResourceDictionary.ThemeDictionaries>
+        <!-- Per-tab accent: Player (green) -->
+        <Color x:Key="SystemAccentColor">#27AE60</Color>
+        <Color x:Key="SystemAccentColorLight1">#27AE60</Color>
+        <Color x:Key="SystemAccentColorLight2">#27AE60</Color>
+        <Color x:Key="SystemAccentColorLight3">#27AE60</Color>
+        <Color x:Key="SystemAccentColorDark1">#1E9048</Color>
+        <Color x:Key="SystemAccentColorDark2">#187638</Color>
+        <Color x:Key="SystemAccentColorDark3">#135C2C</Color>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid ColumnSpacing="8" Padding="12">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left: folder picker + video list -->
+        <Grid Grid.Column="0" RowSpacing="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="8">
+                <Button Content="Choose folder…" Command="{x:Bind ViewModel.ChooseFolderCommand}"/>
+                <Button Content="Default folders" Command="{x:Bind ViewModel.ScanDefaultsCommand}"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Text="{x:Bind ViewModel.CurrentFolder, Mode=OneWay}"
+                       Opacity="0.6" TextTrimming="CharacterEllipsis" FontSize="12"/>
+
+            <Border Grid.Row="2"
+                    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1" CornerRadius="6" Padding="4">
+                <ListView ItemsSource="{x:Bind ViewModel.Videos, Mode=OneWay}"
+                          SelectedItem="{x:Bind ViewModel.SelectedVideo, Mode=TwoWay}"
+                          SelectionChanged="OnSelectionChanged"
+                          IsItemClickEnabled="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:VideoEntry">
+                            <StackPanel Spacing="1" Padding="2">
+                                <TextBlock Text="{x:Bind FileName}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="{x:Bind Folder}" Opacity="0.5" FontSize="11" TextTrimming="CharacterEllipsis"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Border>
+        </Grid>
+
+        <!-- Right: MediaPlayerElement with default transport controls -->
+        <Border Grid.Column="1" Background="Black" CornerRadius="6">
+            <MediaPlayerElement x:Name="PlayerMedia"
+                                AreTransportControlsEnabled="True"
+                                AutoPlay="True"
+                                Stretch="Uniform"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"/>
+        </Border>
+    </Grid>
+</UserControl>

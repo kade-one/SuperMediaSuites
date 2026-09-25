@@ -1,0 +1,59 @@
+# Build output
+bin/
+obj/
+publish_out/
+publish/
+AppPackages/
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.msixupload
+*.appxupload
+BundleArtifacts/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.DotSettings.user
+*.sln.docstates
+*.VC.db
+*.VC.opendb
+
+# Test / coverage
+TestResults/
+[Tt]est[Rr]esult*/
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+
+# Logs, dumps and local settings
+*.log
+*.tmp
+*.bak
+*.cache
+*.pidb
+*.svclog
+core
+*.dmp
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# Bundled runtime binaries: place ffmpeg.exe + ffprobe.exe in ffmpeg\ locally.
+# They are ~200 MB combined and are deliberately NOT committed (see README).
+ffmpeg/
